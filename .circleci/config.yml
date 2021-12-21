@@ -32,11 +32,13 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: ~/src/Common
+          working_directory: ~/project/src/Common
           name: Publish
           command: |
-            dotnet pack --include-source --include-symbols -o ./nuget/ 
-            dotnet nuget push './nuget/*.nupkg' --api-key $NUGET --source https://api.nuget.org/v3/index.json
+            dotnet pack -c Release -o ./ 
+            for f in $(ls *.nupkg);
+              do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY};
+            done;
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -53,8 +55,8 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: /(main|citest)/
+              only: /main/
       - publish:
           filters:
             branches:
-              only: /(main|citest)/
+              only: /main/
