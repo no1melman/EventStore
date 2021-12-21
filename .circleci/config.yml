@@ -32,7 +32,7 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: ~/src/Common
+          working_directory: ~/projectt/src/Common
           name: Publish
           command: |
             dotnet pack --include-source --include-symbols -o ./nuget/ 
