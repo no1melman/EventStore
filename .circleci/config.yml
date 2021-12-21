@@ -48,7 +48,7 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: /(feat|chore|fix|task|test)\/*/
+              only: /(feat|chore|fix|task|test)\/.*/
   publish:
     jobs:
       - build-and-test:
