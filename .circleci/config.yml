@@ -24,7 +24,6 @@ jobs:
           working_directory: ~/project
           name: Build
           command: |
-            ls -la 
             dotnet build
   publish:
     docker:
@@ -54,8 +53,8 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: /main/
+              only: /(main|citest)/
       - publish:
           filters:
             branches:
-              only: /main/
+              only: /(main|citest)/
