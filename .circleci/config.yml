@@ -24,7 +24,7 @@ jobs:
           working_directory: ~/
           name: Build
           command: |
-            ls -la
+            ls -la project
             dotnet build
   publish:
     docker:
