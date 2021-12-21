@@ -37,7 +37,7 @@ jobs:
           command: |
             dotnet pack --include-source --include-symbols -o ./ 
             for f in $(ls *.nupkg);
-              do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key $PROJECT_NUGET_KEY;
+              do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key $NUGET_KEY;
             done;
 
 # Invoke jobs via workflows
