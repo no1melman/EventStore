@@ -36,7 +36,9 @@ jobs:
           name: Publish
           command: |
             dotnet pack --include-source --include-symbols -o ./ 
-            dotnet nuget push "*.nupkg" --source https://api.nuget.org/v3/index.json --api-key $PROJECT_NUGET_KEY;
+            for f in $(ls *.nupkg);
+              do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key $PROJECT_NUGET_KEY;
+            done;
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
