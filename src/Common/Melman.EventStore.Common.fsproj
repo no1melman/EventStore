@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Melman.EventStore.Common</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Callum Linington</Authors>
     <PackageTags>EventStore;Melman;Common;EventStoreDb;Fsharp;FSharp</PackageTags>
     <Description>
