@@ -25,6 +25,14 @@ jobs:
           name: Build
           command: |
             dotnet build
+      - run:
+          # Update this line with the directory that contains your tests project file
+          working_directory: ~/project/tests
+          name: Build
+          command: |
+            for f in $(ls *.fsproj);
+              do dotnet test $f;
+            done;
   publish:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:latest
