@@ -25,12 +25,33 @@ jobs:
           name: Build
           command: |
             dotnet build
+  publish:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:latest
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          working_directory: ~/src/Common
+          name: Publish
+          command: |
+            dotnet pack --include-source --include-symbols -o ./nuget/ 
+            dotnet nuget push './nuget/*.nupkg' --api-key $NUGET --source https://api.nuget.org/v3/index.json
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  build: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-
+  publish:
+    jobs:
+      - build-and-test:
+          filters:
+            branches:
+              only: /main/
+      - publish:
+          filters:
+            branches:
+              only: /main/
