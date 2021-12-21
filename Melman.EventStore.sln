@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9DBCD8EE-E3DA-4DCB-AAF0-C04ADBCFF83E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Melman.EventStore.Common", "src\Common\Melman.EventStore.Common.fsproj", "{C56BF377-20A6-479C-89B3-3697A9F24717}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C56BF377-20A6-479C-89B3-3697A9F24717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C56BF377-20A6-479C-89B3-3697A9F24717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C56BF377-20A6-479C-89B3-3697A9F24717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C56BF377-20A6-479C-89B3-3697A9F24717}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C56BF377-20A6-479C-89B3-3697A9F24717} = {9DBCD8EE-E3DA-4DCB-AAF0-C04ADBCFF83E}
+	EndGlobalSection
+EndGlobal
