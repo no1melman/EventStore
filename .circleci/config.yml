@@ -55,8 +55,8 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: /(main|citest)/
+              only: /main/
       - publish:
           filters:
             branches:
-              only: /(main|citest)/
+              only: /main/
