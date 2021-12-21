@@ -35,8 +35,7 @@ jobs:
           working_directory: ~/project/src/Common
           name: Publish
           command: |
-            dotnet pack --include-source --include-symbols -o ./ 
-            echo "the key $NUGET_KEY"
+            dotnet pack -c Release --include-source --include-symbols -o ./ 
             for f in $(ls *.nupkg);
               do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY};
             done;
