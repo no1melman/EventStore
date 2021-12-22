@@ -1,6 +1,6 @@
 param (
     [Parameter(Mandatory=$true)]
-    [String] $apiKey
+    [String] $ApiKey
 )
 
 
@@ -27,7 +27,7 @@ function PublishProject {
         Write-Host "No remote infomration, could be first time package - got $code"
 
         dotnet pack $projectPath -c Release -o ./packs/$packageId
-        dotnet nuget push "./packs/$packageId/$packageId.$version.nupkg" --source https://api.nuget.org/v3/index.json --api-key $apiKey;
+        dotnet nuget push "./packs/$packageId/$packageId.$version.nupkg" --source https://api.nuget.org/v3/index.json --api-key $ApiKey;
 
         return; 
     }
@@ -43,7 +43,7 @@ function PublishProject {
     Write-Host "Creating and publishing $packageId.$version"
 
     dotnet pack $projectPath -c Release -o ./packs/$packageId
-    dotnet nuget push "./packs/$packageId/$packageId.$version.nupkg" --source https://api.nuget.org/v3/index.json --api-key $apiKey;
+    dotnet nuget push "./packs/$packageId/$packageId.$version.nupkg" --source https://api.nuget.org/v3/index.json --api-key $ApiKey;
 }
 
 Get-ChildItem -Path ./src/**/*.fsproj -Recurse 
