@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{9FAA05FB-1
 	ProjectSection(SolutionItems) = preProject
 		publish.ps1 = publish.ps1
 		README.md = README.md
+		.circleci\config.yml = .circleci\config.yml
 	EndProjectSection
 EndProject
 Global
