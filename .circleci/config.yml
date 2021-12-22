@@ -42,9 +42,8 @@ jobs:
       - run:
           working_directory: ~/project
           name: Publish
-          shell: pwsh
           command: |
-            ./publish.ps1 -ApiKey $NUGET_KEY
+            pwsh ./publish.ps1 -ApiKey ${NUGET_KEY}
             
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
