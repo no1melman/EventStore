@@ -36,7 +36,7 @@ jobs:
   publish:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:latest
-        entrypoint: pwsh # start up powershell
+        command: pwsh # start up powershell
     resource_class: small
     steps:
       - checkout
