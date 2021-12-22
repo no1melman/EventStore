@@ -64,4 +64,10 @@ let readBackToFirstEventOfType (client: EventStoreClient) cancellationToken stre
     return resolveEv
 }
 
-let readEvent<'a> opts (evnt: ResolvedEvent) = deserialise<'a> opts evnt.Event.Data 
+let readEvent<'a> opts (evnt: ResolvedEvent) = deserialise<'a> opts evnt.Event.Data
+
+
+let subscribe (client: EventStoreClient) ct streamName start eventAppeared subscriptionDropped =
+    start
+    |> Option.map (fun s -> client.SubscribeToStreamAsync(streamName, StreamPosition(s), eventAppeared, subscriptionDropped = subscriptionDropped, cancellationToken = ct))
+    |> Option.defaultValue (client.SubscribeToStreamAsync(streamName, eventAppeared, subscriptionDropped = subscriptionDropped, cancellationToken = ct)) 
