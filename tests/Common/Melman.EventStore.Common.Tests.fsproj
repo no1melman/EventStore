@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="EventToUnionCaseTests.fs" />
+    <Compile Include="HelpersTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
