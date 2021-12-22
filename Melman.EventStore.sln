@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9DBCD8EE-E3D
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Melman.EventStore.Common", "src\Common\Melman.EventStore.Common.fsproj", "{C56BF377-20A6-479C-89B3-3697A9F24717}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1297A2F5-FC36-4259-B858-161C0812966B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Melman.EventStore.Common.Tests", "tests\Common\Melman.EventStore.Common.Tests.fsproj", "{42E49D9A-B6D8-49D4-904D-F9E14C698DFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +24,13 @@ Global
 		{C56BF377-20A6-479C-89B3-3697A9F24717}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C56BF377-20A6-479C-89B3-3697A9F24717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C56BF377-20A6-479C-89B3-3697A9F24717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E49D9A-B6D8-49D4-904D-F9E14C698DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E49D9A-B6D8-49D4-904D-F9E14C698DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E49D9A-B6D8-49D4-904D-F9E14C698DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E49D9A-B6D8-49D4-904D-F9E14C698DFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C56BF377-20A6-479C-89B3-3697A9F24717} = {9DBCD8EE-E3DA-4DCB-AAF0-C04ADBCFF83E}
+		{42E49D9A-B6D8-49D4-904D-F9E14C698DFE} = {1297A2F5-FC36-4259-B858-161C0812966B}
 	EndGlobalSection
 EndGlobal
