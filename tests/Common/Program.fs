@@ -1,3 +1,5 @@
+namespace Melman.EventStore.Common.Tests
+
 module Program =
 
     [<EntryPoint>]
