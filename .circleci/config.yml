@@ -60,8 +60,8 @@ workflows:
       - build-and-test:
           filters:
             branches:
-              only: /main/
+              only: /(main|citest)/
       - publish:
           filters:
             branches:
-              only: /main/
+              only: /(main|citest)/
