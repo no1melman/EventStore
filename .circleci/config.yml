@@ -36,18 +36,15 @@ jobs:
   publish:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:latest
+        entrypoint: pwsh # start up powershell
     resource_class: small
     steps:
       - checkout
       - run:
-          working_directory: ~/project/src/Common
+          working_directory: ~/project
           name: Publish
           command: |
-            dotnet pack -c Release -o ./ 
-            for f in $(ls *.nupkg);
-              do dotnet nuget push $f --source https://api.nuget.org/v3/index.json --api-key ${NUGET_KEY};
-            done;
-
+            ./publish.ps1 -apiKey ${NUGET_KEY}
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
