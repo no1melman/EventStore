@@ -3,6 +3,7 @@ module Melman.EventStore.Common.Helpers
 open System
 open System.Text.Json
 
+open System.Threading
 open EventStore.Client
 
 
