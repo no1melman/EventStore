@@ -28,9 +28,9 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ~/project/tests
-          name: Build
+          name: Test
           command: |
-            for f in $(ls tests/**/*.fsproj);
+            for f in $(ls **/*.fsproj);
               do dotnet test $f;
             done;
   publish:
