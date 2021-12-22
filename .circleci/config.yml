@@ -30,7 +30,7 @@ jobs:
           working_directory: ~/project/tests
           name: Build
           command: |
-            for f in $(ls *.fsproj);
+            for f in $(ls tests/**/*.fsproj);
               do dotnet test $f;
             done;
   publish:
