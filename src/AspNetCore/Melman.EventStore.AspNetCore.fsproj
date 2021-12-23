@@ -3,18 +3,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>Melman.EventStore.AspNetCore</PackageId>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <Authors>Callum Linington</Authors>
     <PackageTags>EventStore;Melman;AspNetCore;BackgroundService;IHostedService;HostedService;EventStoreDb;Fsharp;FSharp</PackageTags>
     <Description>
       This library contains AspNetCore helpers for using EventStore with F#
     </Description>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Json/Converters.fs" />
     <Compile Include="Json/Common.fs" />
     <Compile Include="StreamSubscriber.fs" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EventStore.Client.Grpc.Streams" Version="21.2.0" />
