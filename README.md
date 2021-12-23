@@ -51,27 +51,53 @@ Publishing events:
 
 ```fsharp
 // client that we created earlier
-Helpers.appendEvents client cancellationToken "User-012324" [ eventData ] // -- Task
+do! Helpers.appendEvents client cancellationToken "User-012324" [ eventData ] // -- Task
 ```
 
 Read all events:
 
 ```fsharp
-Helpers.readAllEvents client cancellationToken "User-012324" // -- Task<ResolvedEvent list>
+let! events = Helpers.readAllEvents client cancellationToken "User-012324" // -- Task<ResolvedEvent list>
 ```
 
 Deserialise a ResolvedEvent (aka, once you've done the above):
 
 ```fsharp
-Helpers.readEvent<UserAdded> opts event // -- UserAdded
+let userAdded = Helpers.readEvent<UserAdded> opts event // -- UserAdded
+
+let eventType = typedefof<UserAdded>
+
+let objThatIsUserAdded = Helpers.readEventWithType opts event eventType
 ```
 
 This final one is sort of my way of finding the last event of a type, say if I were pumping price/hr of crypto 
 and wanted the last event pushed into the stream:
 
 ```fsharp
-Helpers.readBackToFirstEventOfType client cancellationToken "BTC" "SpotPriceAdded" // Task<ResolvedEvent option>
+let! maybeEvent = Helpers.readBackToFirstEventOfType client cancellationToken "BTC" "SpotPriceAdded" // Task<ResolvedEvent option>
 ```
+
+### Design
+
+These are all designed with the most rigid values at the beginning of the functions to optimise partial application:
+
+
+```fsharp
+
+let createEvent = Helpers.createJsonEvent opts
+
+let createUserAddedEvent = createEvent "UserAdded"
+
+
+// ========================
+
+
+let appendToUserStream = Helpers.appendEvents client cancellationToken "User-012324"
+
+appendToUserStream [ anEvent; anAnotherEvent ]
+
+```
+
 
 ### Union Helpers
 
