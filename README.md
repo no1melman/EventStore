@@ -122,7 +122,6 @@ type Transaction =
     }
 
 type SpotPriceAdded = { Price: decimal }
-type Transaction
 
 type CryptoStream 
     | AssetBought of Transaction
