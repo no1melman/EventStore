@@ -49,3 +49,20 @@ let ``Given the system type for an event it still deserilises`` () =
     let result = readEventWithType opts resEv (typedefof<TempData>) :?> TempData
     
     Assert.That("jeff" = result.Name)
+
+
+[<Test>]
+let ``Given the just data it creates event`` () =
+    let opts =
+        let opts = JsonSerializerOptions()
+        opts.PropertyNameCaseInsensitive <- true
+        opts
+    
+    let data = createJsonEventFromObj opts { Name = "jeff" }
+    
+    let resEv = createDummyRecord data
+    
+    let result = readEventWithType opts resEv (typedefof<TempData>) :?> TempData
+    
+    Assert.AreEqual("TempData", data.Type)
+    Assert.That("jeff" = result.Name)

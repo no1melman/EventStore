@@ -3,9 +3,7 @@ module Melman.EventStore.Common.Helpers
 open System
 open System.Text.Json
 
-open System.Threading
 open EventStore.Client
-
 
 let createClient url = new EventStoreClient(EventStoreClientSettings.Create(url))
 
@@ -13,13 +11,20 @@ let private deserialiseWithReturnType opts eventType (data: ReadOnlyMemory<byte>
 let private deserialise<'a> opts (data: ReadOnlyMemory<byte>) = JsonSerializer.Deserialize<'a>(data.Span, options = opts)
 let private serialise opts data = ReadOnlyMemory(JsonSerializer.SerializeToUtf8Bytes(data, options = opts))
 
+let private getEventType<'a> = typedefof<'a>.Name
+let private getEventTypeFromObject data = data.GetType().Name
+
 let createJsonEvent (options: JsonSerializerOptions) eventType data =
     let serialisedData = serialise options data
     EventData(
         Uuid.NewUuid(),
         eventType,
         serialisedData)
-    
+
+let createJsonEventFromObj (options: JsonSerializerOptions) data =
+    createJsonEvent options (getEventTypeFromObject data) data
+
+
 let appendEvents (client: EventStoreClient) cancellationToken streamName events = task {
     let! writeResult = client.AppendToStreamAsync(streamName, StreamState.Any, events, cancellationToken = cancellationToken)
     
