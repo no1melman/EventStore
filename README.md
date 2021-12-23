@@ -1,7 +1,7 @@
 [![CircleCI](https://circleci.com/gh/no1melman/EventStore/tree/main.svg?style=shield)](https://circleci.com/gh/no1melman/EventStore/tree/main)
 
-[![Nuget](https://badgen.net/nuget/v/Melman.EventStore.Common/latest?color=blue&icon=nuget&label=Melman.EventStore.Common)](https://www.nuget.org/packages?q=Melman.EventStore.Common)<br />
-[![Nuget](https://badgen.net/nuget/v/Melman.EventStore.AspNetCore/latest?color=blue&icon=nuget&label=Melman.EventStore.AspNetCore)](https://www.nuget.org/packages?q=Melman.EventStore.AspNetCore)
+[![Nuget](https://badgen.net/nuget/v/Melman.EventStore.Common/latest?color=blue&icon=nuget&label=Melman.EventStore.Common)](https://www.nuget.org/packages/Melman.EventStore.Common/)<br />
+[![Nuget](https://badgen.net/nuget/v/Melman.EventStore.AspNetCore/latest?color=blue&icon=nuget&label=Melman.EventStore.AspNetCore)](https://www.nuget.org/packages/Melman.EventStore.AspNetCore/)
 
 # EventStore FSharp Helpers
 
