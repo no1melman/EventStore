@@ -45,6 +45,7 @@ let opts =
   opts
 
 let eventData = Helpers.createJsonEvent opts "UserAdded" {| UserName = "Callum" |}
+let moreEventData = createJsonEventFromObj opts data // this will use the Type Name of data, so data.GetType().Name
 ```
 
 Publishing events:
@@ -187,4 +188,26 @@ type StreamSubscriber(logger: ILogger<StreamSubscriber>, eventStoreFactory: IEve
     override this.HandleSubscriptionDropped reason error = () // here you can handle what happens when a sub is dropped
     override this.StoreLatestEventPosition latestEventPosition = Task.CompletedTask // this is for if you want to store the last position in Redis or something
     override this.Stream = "Test Stream" // this will be the stream you're subscribing to...
+```
+
+#### Json
+
+There is some helpers for the json stuff
+
+```fsharp
+
+let opts = Json.Common.jsonOpts None [] // creates JsonSerializerOptions with only the defaults (includes OptionsConverterFactory) (no extra converters)
+
+let opts2 = Json.Common.jsonOpts (Some opts) [] // creates JsonSerializerOptions with the previous as the base (no converters)
+
+let opts3 = Json.Common.jsonOpts None [ MyCustomConverter() ] // creates JsonSerializerOptions with a `MyCustomConverter` included (only defaults)
+```
+
+If you want to use the `OptionConverter<Option<'a>>` (which isn't needed if using the above) then you do
+
+```fsharp
+let opts = 
+    let opts = JsonSerializerOptions()
+    opts.Converters.Add(OptionConverterFactory())
+    opts
 ```
