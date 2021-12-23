@@ -9,7 +9,7 @@ open EventStore.Client
 
 let createClient url = new EventStoreClient(EventStoreClientSettings.Create(url))
 
-
+let private deserialiseWithReturnType opts eventType (data: ReadOnlyMemory<byte>) = JsonSerializer.Deserialize(data.Span, returnType = eventType, options = opts)
 let private deserialise<'a> opts (data: ReadOnlyMemory<byte>) = JsonSerializer.Deserialize<'a>(data.Span, options = opts)
 let private serialise opts data = ReadOnlyMemory(JsonSerializer.SerializeToUtf8Bytes(data, options = opts))
 
@@ -66,7 +66,7 @@ let readBackToFirstEventOfType (client: EventStoreClient) cancellationToken stre
 }
 
 let readEvent<'a> opts (evnt: ResolvedEvent) = deserialise<'a> opts evnt.Event.Data
-
+let readEventWithType opts (evnt: ResolvedEvent) eventType = deserialiseWithReturnType opts eventType evnt.Event.Data
 
 let subscribe (client: EventStoreClient) ct streamName start eventAppeared subscriptionDropped =
     start
