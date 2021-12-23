@@ -1,4 +1,4 @@
-module Melman.EventStore.AspNetCore.Tests
+module Melman.EventStore.AspNetCore.Tests.StreamSubscriberTests
 
 open System
 open System.Text.Json
@@ -6,6 +6,7 @@ open System.Threading
 open System.Threading.Tasks
 
 open Melman.EventStore.Common
+open Melman.EventStore.AspNetCore
 open Microsoft.Extensions.Hosting
 open NUnit.Framework
 open Moq
